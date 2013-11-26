@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Stephen Mizell</title>
+  <subtitle>Article Feed</subtitle>
+  <id>http://smizell.com</id>
+  <link href="http://smizell.com"/>
+  <link href="http://smizell.com/feed.xml" rel="self"/>
+  <author>
+    <name>Stephen Mizell</name>
+  </author>
+</feed>
