@@ -5,6 +5,10 @@ $media-desktop-min: 768px !default;
 $serif-font: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $sans-serif-font: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+// Widths
+$homepage-width: 640px;
+$main-width: 640px;
+
 // Pretty retro - blue links with purple for visited
 $link-normal: #48c;
 $link-visited: #639;
@@ -65,7 +69,7 @@ header {
   @extend .grid-container;
   padding: 35px 0;
   background-color: #fff;
-  max-width: 640px;
+  max-width: $homepage-width;
 
   header {
     @extend .grid-100;
@@ -86,10 +90,10 @@ header {
   }
 }
 
-.weblog {
+.weblog, .layout {
   @extend .grid-container;
   background-color: #fff;
-  max-width: 640px;
+  max-width: $main-width;
 }
 
 .weblog-latest {
