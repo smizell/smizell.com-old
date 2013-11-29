@@ -21,19 +21,19 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="homepage">
+    <div class="homepage" itemscope itemtype="http://schema.org/Person">
       <header>
-        <h1>Stephen Mizell</h1>
+        <h1 itemprop="name">Stephen Mizell</h1>
       </header>
 
       <section class="info">
-        <p>Christian, Husband, Father, Analyst, Programmer, Bearded</p>
+        <p itemprop="description">Christian, Husband, Father, Analyst, Programmer, Bearded</p>
       </section>
 
       <nav>
         Navigation:
         <a href="/about.html">About me</a> &bull;
-        <a href="/feed.xml" type="text/xml">Atom Feed</a>
+        <a href="/feed.xml" type="application/atom+xml">Atom Feed</a>
       </nav>
 
       <%= yield %>

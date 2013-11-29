@@ -15,25 +15,34 @@
     <%= javascript_include_tag  "all" %>
 
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700,400italic" />
+    <link rel="canonical" href="http://smizell.com<%= current_article.url %>" />
   </head>
   <body>
     <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="weblog">
+    <div class="weblog hfeed">
       
-      <header class="grid-100">
-        <span>
-          <a href="/" rel="home">Stephen Mizell</a> &bull;
-          Posted <%= current_article.date.strftime('%B %e, %Y') %>
-        </span>
-        <h1><%= widont(current_article.title) %></h1>
-      </header>
+      <article role="article" class="hentry" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+          <span class="byline">
+            <span class="vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <a href="/" rel="author" class="fn" itemprop="url">Stephen Mizell</a>
+            </span>
+            &bull;
+            Posted 
+            <time class="published updated" itemprop="dateCreated" datetime="<%= current_article.date.iso8601 %>">
+              <%= current_article.date.strftime('%B %e, %Y') %>
+            </time>
+          </span>
+          <h1 itemprop="name headline" class="entry-title"><%= widont(current_article.title) %></h1>
+        </header>
 
-      <section class="grid-100">
-        <%= yield %>
-      </section>
+        <section itemprop="articleBody" class="entry-content">
+          <%= yield %>
+        </section>
+      </article>
     </div>
 </body>
 </html>

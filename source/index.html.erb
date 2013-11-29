@@ -14,12 +14,16 @@ layout: homepage
     <h2>Latest Posts</h2>
     <ul>
       <% blog.articles[0...5].each do |article| %>
-        <li>
+        <li itemscope itemtype="http://schema.org/BlogPosting">
           <h3>
-            <a href="<%= article.url %>"><%= article.title %></a>
-            <time><%= article.date.strftime('%B %e, %Y') %></time>
+            <a href="<%= article.url %>" itemprop="url">
+              <span itemprop="name headline"><%= article.title %></span>
+            </a>
+            <time itemprop="dateCreated" datetime="<%= article.date.iso8601 %>"><%= article.date.strftime('%B %e, %Y') %></time>
           </h3>
-          <%= article.summary(250, '...') %>
+          <div itemprop="description">
+            <%= article.summary(250, '...') %>
+          </div>
         </li>
       <% end %>
     </ul>
