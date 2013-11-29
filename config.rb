@@ -38,6 +38,8 @@ page "feed.xml", :layout => false
 # Reload the browser automatically whenever files change
 activate :livereload
 
+activate :directory_indexes
+
 # Methods defined in the helpers block are available in templates
 helpers do
   # I really don't like when there is one word on a line by itself,
@@ -57,7 +59,7 @@ set :images_dir, 'images'
 activate :blog do |blog|
   blog.prefix = "weblog"
   blog.layout = "weblog"
-  blog.permalink = ":year/:title.html"
+  blog.permalink = ":year/:title"
 end
 
 activate :deploy do |deploy|
