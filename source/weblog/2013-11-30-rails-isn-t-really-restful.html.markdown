@@ -1,7 +1,7 @@
 ---
 title: Rails Isn't Really RESTful
-date: 2013-11-28 03:51 UTC
-tags: rest, rails
+date: 2013-11-30 01:47 UTC
+tags:
 ---
 
 Lately I've really been studying the [REST architecture](http://en.wikipedia.org/wiki/Representational_state_transfer) and have really had a lot of my views about the web completely changed, along with my hopes for where I'd love to see the web go. I've also wanted to start writing publicly more, so I thought I'd put down some thoughts and ideas I've had recently about REST.

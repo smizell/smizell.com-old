@@ -119,11 +119,9 @@ header {
 
 .content {
   @extend .grid-100;
-  @extend .grid-parent;
 }
 
 .weblog-latest {
-  @extend .grid-100;
 
   h2 {
     @extend .delta;

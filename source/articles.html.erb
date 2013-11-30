@@ -3,7 +3,7 @@ title: Articles from Weblog
 ---
 
 <% if !blog.articles.empty? %>
-  <section class="weblog-latest">
+  <div class="weblog-latest">
     <ul>
       <% blog.articles.each do |article| %>
         <li itemscope itemtype="http://schema.org/BlogPosting">
@@ -16,7 +16,7 @@ title: Articles from Weblog
         </li>
       <% end %>
     </ul>
-  </section>
+  </div>
 <% else %>
   <p>No articles</p>
 <% end %>
