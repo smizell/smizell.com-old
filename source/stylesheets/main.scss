@@ -104,12 +104,22 @@ header {
 
 .weblog, .layout {
   @extend .grid-container;
+
   background-color: #fff;
   max-width: $main-width;
 
   header, section {
     @extend .grid-100;
   }
+
+  section.content {
+    @extend .grid-parent;
+  }
+}
+
+.content {
+  @extend .grid-100;
+  @extend .grid-parent;
 }
 
 .weblog-latest {

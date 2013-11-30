@@ -108,7 +108,7 @@ This is all in one controller, but here is how they line up with actual resource
 
 ##### Form controls
 
-These are used to display forms for creating/updating items. In most APIs, these forms are either included in the response or in the link relations. That doesn't mean they can't be on a separate URL, though.
+These are used to display forms for creating/updating items. In most APIs, these forms are either included in the response or described in the link relations. That doesn't mean they can't be on a separate URL, though.
 
 * **new** is a form control for adding a new photo item
 *  **edit** is a form control for editing a photo item
@@ -117,7 +117,7 @@ These are used to display forms for creating/updating items. In most APIs, these
 
 This is all very confusing to keep straight. If you don't understand that a collection of items and items themselves are different resources, you'll end up completely missing the idea of having a collection resource, and if you're like me and think like I did, you'll just make a JSON list of item resources.
 
-Why does Rails have to do this with its interpretation of web resources? Why is the MVC architecture even there if it complicates things so much?
+Why does Rails have to do this with its interpretation of web resources? Why is the MVC architecture there if it complicates things so much?
 
 ## Conclusion
 

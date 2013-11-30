@@ -1,0 +1,22 @@
+---
+title: Articles from Weblog
+---
+
+<% if !blog.articles.empty? %>
+  <section class="weblog-latest">
+    <ul>
+      <% blog.articles.each do |article| %>
+        <li itemscope itemtype="http://schema.org/BlogPosting">
+          <h3>
+            <a href="<%= article.url %>" itemprop="url">
+              <span itemprop="name headline"><%= article.title %></span>
+            </a>
+            <time itemprop="dateCreated" datetime="<%= article.date.iso8601 %>"><%= article.date.strftime('%B %e, %Y') %></time>
+          </h3>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+<% else %>
+  <p>No articles</p>
+<% end %>
