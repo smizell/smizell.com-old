@@ -1,0 +1,1 @@
+!function(){jQuery(function(){return $("a[data-nonsense]").click(function(n){return $(this).parent().hide(),n.preventDefault()})})}.call(this);

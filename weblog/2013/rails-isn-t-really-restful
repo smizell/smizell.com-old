@@ -1,0 +1,180 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stephen Mizell - Rails Isn't Really RESTful</title>
+    <meta name="description" content="Stephen Mizell, smizell">
+    <meta name="viewport" content="width=device-width">
+    <link href="/stylesheets/main-a890f4e4.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/javascripts/all-01c05253.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700,400italic" />
+    <link rel="canonical" href="http://smizell.com/weblog/2013/rails-isn-t-really-restful" />
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="weblog hfeed">
+      
+      <article role="article" class="hentry" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+          <span class="byline">
+            <span class="vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <a href="/" rel="author" class="fn" itemprop="url">Stephen Mizell</a>
+            </span>
+            &bull;
+            Posted 
+            <time class="published updated" itemprop="dateCreated" datetime="2013-11-30T01:47:00Z">
+              November 30, 2013
+            </time>
+          </span>
+          <h1 itemprop="name headline" class="entry-title">Rails Isn't Really&nbsp;RESTful</h1>
+        </header>
+
+        <section itemprop="articleBody" class="entry-content">
+          <p>Lately I’ve really been studying the <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST architecture</a> and have really had a lot of my views about the web completely changed, along with my hopes for where I’d love to see the web go. I’ve also wanted to start writing publicly more, so I thought I’d put down some thoughts and ideas I’ve had recently about REST.</p>
+
+<p>I wanted to start with a post exploring some of the headaches I’ve had when building a truly RESTful API in Rails. The way Rails does REST is not really REST, and it’s also somewhat counterproductive when trying to really do REST. </p>
+
+<h2 id="what-i-mean-by-rest">What I Mean By REST</h2>
+
+<p>I thought I’d first clarify what I mean when I say REST. In the world of API development, REST usually includes the following concepts.</p>
+
+<ol>
+  <li>Pretty URLs</li>
+  <li>HTTP verbs for CRUD</li>
+  <li>Different data format types, such as JSON or XML, through the same URL</li>
+</ol>
+
+<p>REST <em>can</em> include these concepts, though they don’t really get to the heart of what REST really is. In reality, REST primarily deals with three big ideas.</p>
+
+<ol>
+  <li><strong>Resources</strong></li>
+  <li><strong>Representations</strong> of those resources</li>
+  <li><strong>Hypermedia</strong> to instruct the client on how to interact with those resources</li>
+</ol>
+
+<p>REST comes from an idea that for systems to be scalable and distributed, clients and servers must be able to understand each other without any human intervention. You see this everyday on the web. Your browser—the client—can understand any website—the server—that serves up HTML over HTTP. It will give you links for navigating the site along with forms for adding, changing, or removing resources. You don’t have to have a special client for each site you visit It’s all handled by that one client because the interfaces are uniform and because it uses a known hypermedia, HTML.</p>
+
+<p>Of course, this small section does not do REST justice, so please explore other resources on this topic written by much smarter people. My main point with this, though, is that REST is not limited to the simple ideas of CRUD, HTTP verbs, and pretty URLs, but revolves around the concept of resources.</p>
+
+<h2 id="the-issues-with-rails">The Issues with Rails</h2>
+
+<p>Here are a couple of bigger issues I came across that I felt were counterproductive in building a RESTful API. I’ll go through each of these.</p>
+
+<ol>
+  <li><strong>REST is not about the database</strong> - The difficulty here is that Rails is primarily built for making your database accessible through the web and not about resources</li>
+  <li><strong>Rails resources are not REST resources</strong> - Rails resources that are mapped to controller actions add an unnecessary layer of complexity that took me a while to work through. Additionally, Rails controllers reference multiple resources which adds to that complexity.</li>
+</ol>
+
+<h3 id="rest-is-not-about-the-database">1. REST is not about the database</h3>
+
+<p>This may be a straw man here, but Rails seems to ask the questions, “How can I make my database models available to my application view layer, and how can I get data from my view layer back to my database?” Rails is of course primarily a framework for building web applications, and so this makes sense.</p>
+
+<p>Rails is setup as a Model-View-Controller (MVC) framework. In Rails’ MVC, models are tied to your database tables, views represent data (not necessarily a model itself), and controllers act as the glue, making models available to views and receiving input from views to be stored in the models.</p>
+
+<p>In light of all of this, when people talk of REST endpoints in Rails, they are usually referring to accessing a given database model through HTTP. Rails provides several routes for accessing this data that revolve around the idea of CRUD, which has its roots in the database world. As shown on the <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete#Database_applications">Wikipedia page for CRUD</a>, it seems to assert that using HTTP verbs like database calls is considered RESTful.</p>
+
+<p>In reality, REST is not about accessing data in your database or like a database, but rather it is about accessing resources and performing actions on those resources (which may or may not fit into the idea of CRUD). Read back through all that I just said above about MVC and CRUD and you won’t see anything about resources, resource representations, or hypermedia, which are all at the heart of REST.</p>
+
+<p>If Rails was built around the idea of resources instead of starting with the database and working to expose it, we’d be much closer to have a better web with better APIs that harness this idea of discoverability, and as you will see below, it would make things a lot simpler.</p>
+
+<h3 id="rails-resources-are-not-rest-resources">2. Rails resources are not REST resources</h3>
+
+<p>This was one of the harder ones for me to get past, and it was the idea that a controller is not equal to a resource.</p>
+
+<p>Rails has a routes file for directing requests to their proper controllers. I’ll start with the code for the route and work our way into the controller. I will use the example from <a href="http://guides.rubyonrails.org/routing.html">Rails’ docs on routing</a>.</p>
+
+<p>In your routes file, you have something as simple as the line below.</p>
+
+<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="n">resources</span> <span class="ss">:photos</span>
+</td></tr></tbody></table></pre>
+<p>This gives you several different routes that point to your PhotosController. It gives you two primary URLs for your resource(s):</p>
+
+<ul>
+  <li><strong>/photos</strong> which is a collection of photos</li>
+  <li><strong>/photos/:id</strong> which is a specific photo resource</li>
+</ul>
+
+<p>When it comes down to it, <strong>those are both different resources</strong>. A collection of items should be treated as a different resource than the actual item itself. Grasping this took me a long while since I had to understand I needed two different types of representations.</p>
+
+<p>In this case, posting to a collection resource allows you to add a resource to that collection. You may want to provide links in your response that filter down that collection resource or even paginate it. The important part of this is that you have to keep it straight even though your controller may look like this below.</p>
+
+<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div></td><td class="code"><span class="k">class </span><span class="nc">PhotosController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def </span><span class="nf">index</span>
+  <span class="k">end</span>
+
+  <span class="k">def </span><span class="nf">new</span>
+  <span class="k">end</span>
+
+  <span class="k">def </span><span class="nf">create</span>
+  <span class="k">end</span>
+
+  <span class="k">def </span><span class="nf">show</span>
+  <span class="k">end</span>
+
+  <span class="k">def </span><span class="nf">edit</span>
+  <span class="k">end</span>
+
+  <span class="k">def </span><span class="nf">update</span>
+  <span class="k">end</span>
+
+  <span class="k">def </span><span class="nf">destroy</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</td></tr></tbody></table></pre>
+<h4 id="lining-things-up">Lining things up</h4>
+
+<p>This is all in one controller, but here is how they line up with actual resources.</p>
+
+<h5 id="photo-collection-resource-at-photos">Photo collection resource at /photos</h5>
+
+<ul>
+  <li><strong>index</strong> is used to GET a collection of photos</li>
+  <li><strong>create</strong> is used when sending a POST request to the collection to add a resource</li>
+</ul>
+
+<h5 id="photo-item-resource-at-photosid">Photo item resource at /photos/:id</h5>
+
+<ul>
+  <li><strong>show</strong> is used to GET an item</li>
+  <li><strong>update</strong> is used when updating an item (via PATCH/PUT)</li>
+  <li><strong>destroy</strong> is used to DELETE an item</li>
+</ul>
+
+<h5 id="form-controls">Form controls</h5>
+
+<p>These are used to display forms for creating/updating items. In most APIs, these forms are either included in the response or described in the link relations. That doesn’t mean they can’t be on a separate URL, though.</p>
+
+<ul>
+  <li><strong>new</strong> is a form control for adding a new photo item</li>
+  <li><strong>edit</strong> is a form control for editing a photo item</li>
+</ul>
+
+<h4 id="brining-it-back-together">Brining it back together</h4>
+
+<p>This is all very confusing to keep straight. If you don’t understand that a collection of items and items themselves are different resources, you’ll end up completely missing the idea of having a collection resource, and if you’re like me and think like I did, you’ll just make a JSON list of item resources.</p>
+
+<p>Why does Rails have to do this with its interpretation of web resources? Why is the MVC architecture there if it complicates things so much?</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Rails is designed to build applications, and does a great job at this. Rails is not designed, however, to build web resources out of the box that fit into the REST architecture and constraints. You can make Rails work, but you first have to understand making web resources is not about exposing your database tables.</p>
+
+<p>Rails also uses MVC, which is great for creating applications, but adds several layers of complexity from routes to controllers to views that detract from the idea of resources. It also confuses the idea of delivering representations of resources with delivering different content types for controller actions, which are both related but completely different ideas.</p>
+
+<p>I’ll end by saying I really enjoy Rails and use it daily, and I wrote this article to express some issues I had along the way in hopes of helping others. I have some thoughts on how things could be improved, but I don’t know if I could encapsilate those thoughts any better than <a href="https://github.com/seancribbs/webmachine-ruby">Webmachine</a> does, which focuses primarily on resources.</p>
+
+        </section>
+      </article>
+    </div>
+</body>
+</html>
