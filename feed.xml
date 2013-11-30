@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://smizell.com/weblog/2013/rails-isn-t-really-restful.html"/>
     <id>http://smizell.com/weblog/2013/rails-isn-t-really-restful.html</id>
     <published>2013-11-30T01:47:00Z</published>
-    <updated>2013-11-29T20:37:36-06:00</updated>
+    <updated>2013-11-29T21:10:27-06:00</updated>
     <author>
       <name>Stephen Mizell</name>
     </author>
@@ -59,7 +59,7 @@
 
 &lt;p&gt;Rails is setup as a Model-View-Controller (MVC) framework. In Rails’ MVC, models are tied to your database tables, views represent data (not necessarily a model itself), and controllers act as the glue, making models available to views and receiving input from views to be stored in the models.&lt;/p&gt;
 
-&lt;p&gt;In light of all of this, when people talk of REST endpoints in Rails, they are usually referring to accessing a given database model through HTTP. Rails provides several routes for accessing this data that revolve around the idea of CRUD, which has its roots in the database world. As shown on the &lt;a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete#Database_applications"&gt;Wikipedia page for CRUD&lt;/a&gt;, it seems to assert that using HTTP verbs like database calls is considered RESTful.&lt;/p&gt;
+&lt;p&gt;In light of all of this, when people talk of REST endpoints in Rails, they are usually referring to accessing a given database model through HTTP. Rails provides several routes for accessing this data that revolve around the idea of CRUD, which has its roots in the database world. As shown on the &lt;a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete#Database_applications"&gt;Wikipedia page for CRUD&lt;/a&gt;, it seems to assert that using HTTP verbs like database calls is considered RESTful &lt;sup id="fnref:wikipedia"&gt;&lt;a href="#fn:wikipedia" class="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
 &lt;p&gt;In reality, REST is not about accessing data in your database or like a database, but rather it is about accessing resources and performing actions on those resources (which may or may not fit into the idea of CRUD). Read back through all that I just said above about MVC and CRUD and you won’t see anything about resources, resource representations, or hypermedia, which are all at the heart of REST.&lt;/p&gt;
 
@@ -150,6 +150,14 @@
 &lt;p&gt;Rails also uses MVC, which is great for creating applications, but adds several layers of complexity from routes to controllers to views that detract from the idea of resources. It also confuses the idea of delivering representations of resources with delivering different content types for controller actions, which are both related but completely different ideas.&lt;/p&gt;
 
 &lt;p&gt;I’ll end by saying I really enjoy Rails and use it daily, and I wrote this article to express some issues I had along the way in hopes of helping others. I have some thoughts on how things could be improved, but I don’t know if I could encapsilate those thoughts any better than &lt;a href="https://github.com/seancribbs/webmachine-ruby"&gt;Webmachine&lt;/a&gt; does, which focuses primarily on resources.&lt;/p&gt;
+
+&lt;div class="footnotes"&gt;
+  &lt;ol&gt;
+    &lt;li id="fn:wikipedia"&gt;
+      &lt;p&gt;Just because something is said on Wikipedia doesn’t make it correct, but I did want to show that this is a very common thought today. &lt;a href="#fnref:wikipedia" class="reversefootnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
 </content>
   </entry>
 </feed>
