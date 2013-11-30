@@ -38,8 +38,6 @@ page "feed.xml", :layout => false
 # Reload the browser automatically whenever files change
 activate :livereload
 
-activate :directory_indexes
-
 # Methods defined in the helpers block are available in templates
 helpers do
   # I really don't like when there is one word on a line by itself,
@@ -49,6 +47,8 @@ helpers do
     return "#{words[0..-3].join(" ")} #{words[-2, 2].join("&nbsp;")}"
   end
 end
+
+activate :directory_indexes
 
 set :css_dir, 'stylesheets'
 
