@@ -22,7 +22,7 @@ REST *can* include these concepts, though they don't really get to the heart of 
 2. **Representations** of those resources
 3. **Hypermedia** to instruct the client on how to interact with those resources
 
-REST comes from an idea that for systems to be scalable and distributed, clients and servers must be able to understand each other without any human intervention. You see this everyday on the web. Your browser—the client—can understand any website—the server—that serves up HTML over HTTP. It will give you links for navigating the site along with forms for adding, changing, or removing resources. You don't have to have a special client for each site you visit It's all handled by that one client because the interfaces are uniform and because it uses a known hypermedia, HTML.
+REST comes from an idea that for systems to be scalable and distributed, clients and servers must be able to understand each other without any human intervention. You see this everyday on the web. Your browser—the client—can understand any website—the server—that serves up HTML over HTTP. It will give you links for navigating the site along with forms for adding, changing, or removing resources. You don't have to have a special client for each site you visit. It's all handled by that one client because the interfaces are uniform and because it uses a known hypermedia, HTML.
 
 Of course, this small section does not do REST justice, so please explore other resources on this topic written by much smarter people. My main point with this, though, is that REST is not limited to the simple ideas of CRUD, HTTP verbs, and pretty URLs, but revolves around the concept of resources.
 
@@ -113,7 +113,7 @@ These are used to display forms for creating/updating items. In most APIs, these
 * **new** is a form control for adding a new photo item
 *  **edit** is a form control for editing a photo item
 
-#### Brining it back together
+#### Bringing it back together
 
 This is all very confusing to keep straight. If you don't understand that a collection of items and items themselves are different resources, you'll end up completely missing the idea of having a collection resource, and if you're like me and think like I did, you'll just make a JSON list of item resources.
 
