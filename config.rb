@@ -48,8 +48,6 @@ helpers do
   end
 end
 
-activate :directory_indexes
-
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
@@ -59,7 +57,7 @@ set :images_dir, 'images'
 activate :blog do |blog|
   blog.prefix = "weblog"
   blog.layout = "weblog"
-  blog.permalink = ":year/:title"
+  blog.permalink = ":year/:title.html"
 end
 
 activate :deploy do |deploy|
