@@ -39,7 +39,7 @@ This may be a straw man here, but Rails seems to ask the questions, "How can I m
 
 Rails is setup as a Model-View-Controller (MVC) framework. In Rails' MVC, models are tied to your database tables, views represent data (not necessarily a model itself), and controllers act as the glue, making models available to views and receiving input from views to be stored in the models.
 
-In light of all of this, when people talk of REST endpoints in Rails, they are usually referring to accessing a given database model through HTTP. Rails provides several routes for accessing this data that revolve around the idea of CRUD, which has its roots in the database world. As shown on the [Wikipedia page for CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete#Database_applications), it seems to assert that using HTTP verbs like database calls is considered RESTful.
+In light of all of this, when people talk of REST endpoints in Rails, they are usually referring to accessing a given database model through HTTP. Rails provides several routes for accessing this data that revolve around the idea of CRUD, which has its roots in the database world. As shown on the [Wikipedia page for CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete#Database_applications), it seems to assert that using HTTP verbs like database calls is considered RESTful [^wikipedia].
 
 In reality, REST is not about accessing data in your database or like a database, but rather it is about accessing resources and performing actions on those resources (which may or may not fit into the idea of CRUD). Read back through all that I just said above about MVC and CRUD and you won't see anything about resources, resource representations, or hypermedia, which are all at the heart of REST.
 
@@ -126,3 +126,5 @@ Rails is designed to build applications, and does a great job at this. Rails is 
 Rails also uses MVC, which is great for creating applications, but adds several layers of complexity from routes to controllers to views that detract from the idea of resources. It also confuses the idea of delivering representations of resources with delivering different content types for controller actions, which are both related but completely different ideas.
 
 I'll end by saying I really enjoy Rails and use it daily, and I wrote this article to express some issues I had along the way in hopes of helping others. I have some thoughts on how things could be improved, but I don't know if I could encapsilate those thoughts any better than [Webmachine](https://github.com/seancribbs/webmachine-ruby) does, which focuses primarily on resources.
+
+[^wikipedia]: Just because something is said on Wikipedia doesn't make it correct, but I did want to show that this is a very common thought today.
