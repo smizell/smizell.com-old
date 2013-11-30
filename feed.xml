@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Stephen Mizell</title>
-  <subtitle>Article Feed</subtitle>
-  <id>http://smizell.com</id>
-  <link href="http://smizell.com"/>
+  <subtitle>Post Feed</subtitle>
+  <id>http://smizell.com/</id>
+  <link href="http://smizell.com/"/>
   <link href="http://smizell.com/feed.xml" rel="self"/>
   <updated>2013-11-30T01:47:00Z</updated>
   <author>
@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://smizell.com/weblog/2013/rails-isn-t-really-restful.html"/>
     <id>http://smizell.com/weblog/2013/rails-isn-t-really-restful.html</id>
     <published>2013-11-30T01:47:00Z</published>
-    <updated>2013-11-29T19:47:20-06:00</updated>
+    <updated>2013-11-29T20:37:36-06:00</updated>
     <author>
       <name>Stephen Mizell</name>
     </author>
@@ -40,7 +40,7 @@
   &lt;li&gt;&lt;strong&gt;Hypermedia&lt;/strong&gt; to instruct the client on how to interact with those resources&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;REST comes from an idea that for systems to be scalable and distributed, clients and servers must be able to understand each other without any human intervention. You see this everyday on the web. Your browser—the client—can understand any website—the server—that serves up HTML over HTTP. It will give you links for navigating the site along with forms for adding, changing, or removing resources. You don’t have to have a special client for each site you visit It’s all handled by that one client because the interfaces are uniform and because it uses a known hypermedia, HTML.&lt;/p&gt;
+&lt;p&gt;REST comes from an idea that for systems to be scalable and distributed, clients and servers must be able to understand each other without any human intervention. You see this everyday on the web. Your browser—the client—can understand any website—the server—that serves up HTML over HTTP. It will give you links for navigating the site along with forms for adding, changing, or removing resources. You don’t have to have a special client for each site you visit. It’s all handled by that one client because the interfaces are uniform and because it uses a known hypermedia, HTML.&lt;/p&gt;
 
 &lt;p&gt;Of course, this small section does not do REST justice, so please explore other resources on this topic written by much smarter people. My main point with this, though, is that REST is not limited to the simple ideas of CRUD, HTTP verbs, and pretty URLs, but revolves around the concept of resources.&lt;/p&gt;
 
@@ -137,7 +137,7 @@
   &lt;li&gt;&lt;strong&gt;edit&lt;/strong&gt; is a form control for editing a photo item&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id="brining-it-back-together"&gt;Brining it back together&lt;/h4&gt;
+&lt;h4 id="bringing-it-back-together"&gt;Bringing it back together&lt;/h4&gt;
 
 &lt;p&gt;This is all very confusing to keep straight. If you don’t understand that a collection of items and items themselves are different resources, you’ll end up completely missing the idea of having a collection resource, and if you’re like me and think like I did, you’ll just make a JSON list of item resources.&lt;/p&gt;
 
