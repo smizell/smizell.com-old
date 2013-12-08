@@ -11,8 +11,10 @@
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag "main" %>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <%= javascript_include_tag  "all" %>
+    <!--
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <%= javascript_include_tag  "all" %>
+    -->
 
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700,400italic|Open+Sans:700,400" />
   </head>
@@ -32,9 +34,9 @@
 
       <nav>
         Navigation:
-        <a href="/about.html">About me</a> &bull;
-        <a href="/posts.html">Posts</a> &bull;
-        <a href="/feed.xml" type="application/atom+xml">Atom Feed</a>
+        <a href="/about" class="about">About me</a> &bull;
+        <a href="/posts" class="posts">Posts</a> &bull;
+        <a href="/feed" type="application/atom+xml" class="feed">Atom Feed</a>
       </nav>
 
       <%= yield %>

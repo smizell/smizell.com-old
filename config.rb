@@ -46,6 +46,10 @@ helpers do
     words = value.split(" ")
     return "#{words[0..-3].join(" ")} #{words[-2, 2].join("&nbsp;")}"
   end
+
+  def uri(url)
+    url.sub! ".html", ""
+  end
 end
 
 set :css_dir, 'stylesheets'
